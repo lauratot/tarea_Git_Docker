@@ -67,9 +67,8 @@ docker network ls
   
   ![image-20220402203206333](Resolucion_Ejercicio3.assets/image-20220402203206333.png)
 
-  
+- [x] actualizo e instalo los paquetes necesarios para hacer comprobaciones de red
 
-  actualizo e instalo los paquetes necesarios para hacer comprobaciones de red
   ```bash
   apt-get update
   apt-get install net-tools
