@@ -9,7 +9,6 @@ tags: [DAW, despliegue, git, docker]
 >
 > Laura A. Álvarez Cubillas
 >
-> :link:  Video:  
 
 
 
@@ -36,7 +35,7 @@ nano index.html
 
 ### Creación de contenedores y arranque
 
-- [x] Creo contenedor `c1` con la imagen descargada en el ejercicio 1 y hago bind mount para compartir los datos con la carpeta `saludo` y para escuchar en el puerto 8181 lo que se exponga de ese contenedor.
+- [x] Creo contenedor `c1` con la imagen descargada en el ejercicio 1 y hago bind mount para compartir los datos con la carpeta `saludo` , escuchando en el puerto 8181 lo que se exponga de ese contenedor.
 
 ```bash
 docker run --name c1 -p 8181:80 -d -v /home/laura/Documentos/programacion/Despliegue/tarea_Git_Docker/saludo/:/var/www/html php:7.4-apache
@@ -79,3 +78,36 @@ docker ps
 Comprobación desde dos ventanas del navegador que se puede acceder al contenido de `index.html` desde `c1` y `c2`
 
 ![image-20220326211607025](Resolucion%20Ejercicio%202.assets/image-20220326211607025.png)
+
+### Comprobaciones
+
+- [x] Modifico el fichero `~/saludo/index.html`, en este caso he utilizado el Visual Studio Code, donde también tengo git instalado.
+
+![image-20220402165028829](Resolucion%20Ejercicio%202.assets/image-20220402165028829.png)
+
+y a continuación compruebo desde el navegador que el archivo ha cambiado en los dos contenedores sin tener que reiniciarlos.
+
+
+> Como esta parte del ejercicio la hice varios días después de los puntos anteriores tuve que volver a arrancar los contenedores con `docker start c1 `y `docker start c2`
+
+![image-20220402170354483](Resolucion%20Ejercicio%202.assets/image-20220402170354483.png)
+
+![image-20220402165335418](Resolucion%20Ejercicio%202.assets/image-20220402165335418.png)
+
+Al contenedor `c2`he accedido directamente con doble click para que se vea la ruta en el navegador.
+
+![image-20220402165931678](Resolucion%20Ejercicio%202.assets/image-20220402165931678.png)
+
+Borro los dos contenedores, como están arrancados uso `-f` para forzar el borrado. A continuación listo los contenedores arrancados y  luego todos para comprobar que se han borrado.
+
+```bash
+docker rm -f c1 c2
+docker ps
+docker ps -a
+```
+
+![image-20220402170856758](Resolucion%20Ejercicio%202.assets/image-20220402170856758.png)
+
+![image-20220402171323630](Resolucion%20Ejercicio%202.assets/image-20220402171323630.png)
+
+Como se ve en la anterior imagen solo tengo el contenedor `web`del ejercicio 1.
