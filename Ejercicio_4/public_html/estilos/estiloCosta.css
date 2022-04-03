@@ -1,0 +1,11 @@
+body{
+    font-family:'Open Sans', 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+
+.bg-cover{
+    background-image: url(../imagenes/home-costa.jpg);
+}
+.card-text{
+    text-align: justify;
+}
