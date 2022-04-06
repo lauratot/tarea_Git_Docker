@@ -1,5 +1,5 @@
 ---
-title: Resolución Ejercicio 4
+title: Resolución Ejercicio 4 -IMAGEN CON DOCKERFILE
 author: Laura A. Álvarez Cubillas
 tags: [DAW, despliegue, git, docker, Typora]
 
@@ -12,9 +12,11 @@ tags: [DAW, despliegue, git, docker, Typora]
 
 
 
+[TOC]
 
 
-# Resolución Ejercicio 4
+
+# Resolución Ejercicio 4 - IMAGEN CON DOCKERFILE
 
 ## Preparación
 
