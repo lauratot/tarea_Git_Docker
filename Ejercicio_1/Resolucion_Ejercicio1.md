@@ -86,7 +86,7 @@ nano index.html
 
 ![image-20220326184432663](ACTIVIDAD-EVALUABLE---GIT-y-DOCKER---DAW-Distancia.assets/image-20220326184432663.png)
 
-- [x] La salida del navegador del script mes.php
+- [x] La salida del navegador del script `mes.php`
 
 ![image-20220326184512438](ACTIVIDAD-EVALUABLE---GIT-y-DOCKER---DAW-Distancia.assets/image-20220326184512438.png)
 
@@ -98,7 +98,11 @@ docker ps -a -s
 
 ![image-20220326190601952](ACTIVIDAD-EVALUABLE---GIT-y-DOCKER---DAW-Distancia.assets/image-20220326190601952.png)
 
+- [x] Borrado del contenedor creado `web`
 
+  Ver apartado *Borrado de contenedores*
+
+  
 
 ## Servidor de base de datos
 
@@ -152,9 +156,9 @@ exit;
 
 
 
-### Borrado del contenedor
+### Borrado de contenedores
 
-Al estar el contenedor bbdd corriendo no nos permite ni borrarlo, a no ser que se fuerze el borrado, ni borrar la imagen en la que está basado.
+Al estar el contenedor bbdd corriendo no nos permite ni borrarlo, a no ser que se fuerze el borrado, ni borrar la imagen en la que está basado. 
 
 Con `docker ps`se ven los contenedores que hay corriendo y con los siguientes comandos se intentan borrar el contenedor y la imagen y vemos en pantalla que no podemos hacerlo y la salida del error al intentar hacerlo por estar el contenedor corriendo.
 
@@ -174,6 +178,25 @@ docker rm bbdd
 ```
 
 ![image-20220406234604696](Resolucion_Ejercicio1.assets/image-20220406234604696.png)
+
+> Después de borrar el contenedor, lo volví a crear y a parar para probar si al intentar borrar la imagen daba el mismo error y efectivamente no se puede borrar la imagen en la que está basado tanto si está corriendo como si no.
+>
+> Al volver a borrarlo listé todos los contenedores con `docker ps -a` y me dí cuenta de que me faltaba borrar el contenedor usado en el primer apartado de esta tarea, el llamado `web`
+
+![image-20220407003355682](Resolucion_Ejercicio1.assets/image-20220407003355682.png)
+
+```bash
+docker ps -a
+docker rm web
+docker rm bbdd
+docker ps -a
+```
+
+![image-20220407003543715](Resolucion_Ejercicio1.assets/image-20220407003543715.png)
+
+Ahora sí que están todos los contenedores borrados.
+
+###  Imágenes en local
 
 Las imágenes que tengo en local actualmente son:
 
