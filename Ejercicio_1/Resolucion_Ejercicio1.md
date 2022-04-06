@@ -1,17 +1,14 @@
 ---
-title: ACTIVIDAD EVALUABLE - GIT y DOCKER - DAW Distancia
+title: Resolucion Ejercicio 1
 author: Laura A. Álvarez Cubillas
-tags: [DAW, despliegue, git, docekr, Typora]
+tags: [DAW, despliegue, git, docker, Typora]
 
 ---
 
-> ACTIVIDAD EVALUABLE - USO DE GIT + DOCKER - DAW Distancia
+> Resolucion Ejercicio 1
 >
 > Laura A. Álvarez Cubillas
 >
-> :link:  Video:  
-
-
 
 
 
@@ -100,3 +97,86 @@ docker ps -a -s
 ```
 
 ![image-20220326190601952](ACTIVIDAD-EVALUABLE---GIT-y-DOCKER---DAW-Distancia.assets/image-20220326190601952.png)
+
+
+
+## Servidor de base de datos
+
+Se crea el contenedor con una instancia de **mariadb** siguiendo las instrucciones de docker hub para definir las  variables de entorno solicitadas y que se cree una base de datos llamada `prueba` al iniciar la imagen.
+
+```bash
+docker run -d --name bbdd -e MARIADB_ROOT_PASSWORD=root -e MARIADB_DATABASE=prueba -e MARIADB_USER=invitado -e MARIADB_PASSWORD=invitado mariadb:latest
+```
+
+![image-20220406232612964](Resolucion_Ejercicio1.assets/image-20220406232612964.png)
+
+Abrimos una terminal interactiva del contenedor que esta corriendo para conectarnos a la base de datos `bbdd`
+
+```bash
+docker exec -it bbdd bash
+```
+
+y una vez en ella conectamos con la consola de la base de datos con el usuario invitado que creamos, para ello seguimos las instrucciones de docker hub
+
+```bash
+mysql -uinvitado -pinvitado
+```
+
+![Captura de pantalla de 2022-04-06 23-27-35](Resolucion_Ejercicio1.assets/Captura%20de%20pantalla%20de%202022-04-06%2023-27-35.png)
+
+Desde la consola de base de datos con el comando `show databases;`vemos el listado de bases de datos, entre ellas se encuentra la base `prueba` creada al iniciar la imagen.
+
+```mysql
+show databases;
+```
+
+![image-20220406232854435](Resolucion_Ejercicio1.assets/image-20220406232854435.png)
+
+y con el comando `status;` podemos ver el usuario invitado con el que estamos conectados a la consola.
+
+```mysql
+status;	
+```
+
+![image-20220406233307755](Resolucion_Ejercicio1.assets/image-20220406233307755.png)
+
+Para saber que comandos usar en la consola hice uso de `--help` 
+
+Para salir de la consola de la base de datos se usa `exit;` 
+
+```mysql
+exit;
+```
+
+![image-20220406233510877](Resolucion_Ejercicio1.assets/image-20220406233510877.png)
+
+
+
+### Borrado del contenedor
+
+Al estar el contenedor bbdd corriendo no nos permite ni borrarlo, a no ser que se fuerze el borrado, ni borrar la imagen en la que está basado.
+
+Con `docker ps`se ven los contenedores que hay corriendo y con los siguientes comandos se intentan borrar el contenedor y la imagen y vemos en pantalla que no podemos hacerlo y la salida del error al intentar hacerlo por estar el contenedor corriendo.
+
+```bash
+docker ps
+docker rm bbdd
+docker rmi mariadb
+```
+
+![image-20220406234027477](Resolucion_Ejercicio1.assets/image-20220406234027477.png)
+
+Para borrar el contenedor primero se para y luego se borra, también se podría borrar con el flag -f y forzar el borrado `docker rm -f bbdd`
+
+```bash
+docker stop bbdd
+docker rm bbdd
+```
+
+![image-20220406234604696](Resolucion_Ejercicio1.assets/image-20220406234604696.png)
+
+Las imágenes que tengo en local actualmente son:
+
+![image-20220406234918989](Resolucion_Ejercicio1.assets/image-20220406234918989.png)
+
+Al este el último apartado realizado de la tarea, se pueden ver todas las imágenes usadas en todos los ejercicios.
