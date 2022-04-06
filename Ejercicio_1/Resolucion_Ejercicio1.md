@@ -1,16 +1,18 @@
 ---
-title: Resolucion Ejercicio 1
+title: Resolucion Ejercicio 1 - TRABAJO CON IMAGENES
 author: Laura A. Álvarez Cubillas
 tags: [DAW, despliegue, git, docker, Typora]
 
 ---
 
-> Resolucion Ejercicio 1
+> Resolucion Ejercicio 1 - TRABAJO CON IMÁGENES
 >
 > Laura A. Álvarez Cubillas
 >
 
 
+
+[TOC]
 
 # Resolución Ejercicio 1
 
